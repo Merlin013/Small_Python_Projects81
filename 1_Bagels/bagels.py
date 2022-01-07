@@ -26,7 +26,7 @@ def main():
         # This stores the secret number that the player needs to guess:
         secretNum = getSecretNum()
         print("I have thought up a number.")
-        print("You have {} guesses to get it.".format((MAX_GUESSES)))
+        print("You have {} guesses to get it.".format(MAX_GUESSES))
 
         numGuesses = 1
         while numGuesses <= MAX_GUESSES:
@@ -89,6 +89,6 @@ def getClues(guess, secretNum):
         return ' '.join(clues)
 
 
-# If the prohgram is run instead of imported, run the game:
+# If the program is run instead of imported, run the game:
 if __name__ == "__main__":
     main()
