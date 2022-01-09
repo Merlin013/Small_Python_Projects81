@@ -192,18 +192,18 @@ def displayCards(cards):
     rows = ['', '', '', '', '']  # The text to display each row.
 
     for i, card in enumerate(cards):
-        rows[0] += ' ___ '  # print the top line of the cards.
+        rows[0] += ' ___  '  # print the top line of the cards.
         if card == BACKSIDE:
             # Print a card's back:
-            rows[1] += ' |## | '
-            rows[2] += ' |###| '
-            rows[3] += ' | ##| '
+            rows[1] += '|## | '
+            rows[2] += '|###| '
+            rows[3] += '|_##| '
         else:
             # Print the card's front:
             rank, suit = card  # The card is a tuple data structure.
-            rows[1] += ' |{} | '.format(rank.ljust(2))
-            rows[2] += ' | {} | '.format(suit)
-            rows[3] += ' |_{}| '.format(rank.rjust(2, '_'))
+            rows[1] += '|{} | '.format(rank.ljust(2))
+            rows[2] += '| {} | '.format(suit)
+            rows[3] += '|_{}| '.format(rank.rjust(2, '_'))
 
     # Print each row on the screen:
     for row in rows:
