@@ -17,3 +17,7 @@
  
 ### Project 4: BlackJack
  The classic card game also known as 21. (This version doesn't have splitting or insurance.)
+ 
+### Project 5: Bouncing DVD Logo
+ This program simulates this colorful DVD logo by making it
+change direction each time it hits an edge.
