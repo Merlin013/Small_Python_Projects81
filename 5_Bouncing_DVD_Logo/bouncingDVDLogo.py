@@ -1,7 +1,9 @@
 """Bouncing DVD LOGO, by Al Sweigart al@inventwithpython.com
 A bouncing DVD logo animation. You have to be "of a certain age" to appreciate this. Press Ctrl-C to stop"""
 
-import sys, random, time
+import random
+import sys
+import time
 
 try:
     import bext
@@ -35,6 +37,7 @@ X = 'x'
 Y = 'y'
 DIR = 'direction'
 
+
 def main():
     bext.clear()
 
@@ -46,15 +49,15 @@ def main():
                       Y: random.randint(1, HEIGHT - 4),
                       DIR: random.choice(DIRECTIONS)})
         if logos[-1][X] % 2 == 1:
-            # Make sure X is even so it can hit the corner
+            # Make sure X is even so it can hit the corner.
             logos[-1][X] -= 1
 
-    cornerBounces = 0 # Count how many times a logo hits a corner.
-    while True: # Main program loop
-        for logo in logos: # Handle each logo in the logos list.
+    cornerBounces = 0  # Count how many times a logo hits a corner.
+    while True:  # Main program loop
+        for logo in logos:  # Handle each logo in the logos list.
             # Erase the logo's current location:
             bext.goto(logo[X], logo[Y])
-            print(' ', end='')
+            print('   ', end='')
 
             originalDirection = logo[DIR]
 
@@ -129,8 +132,9 @@ def main():
 
         bext.goto(0, 0)
 
-        sys.stdout.flush() # Required for bext-using programs.
+        sys.stdout.flush()  # Required for bext-using programs.
         time.sleep(PAUSE_AMOUNT)
+
 
 # If this program was run (instead of imported), run the game:
 
@@ -140,4 +144,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print()
         print("Bouncing DVD logo, by Al Sweigart")
-        sys.exit() # when CTRL+C is pressed, end the program
+        sys.exit()  # when CTRL+C is pressed, end the program
