@@ -47,3 +47,38 @@ print("Enter the message to {}.".format(mode))
 message = input(">> ")
 
 # Caesar Cipher only works on upper case letters
+message = message.upper()
+
+# Stores the encrypted/decrypted form of the message:
+translated = ''
+
+# Encrypt/Decrypt eacg symbol in the message:
+for symbol in message:
+    if symbol in SYMBOLS:
+        # Get the encrypted (or decrypted) number for this symbol.
+        num = SYMBOLS.find(symbol) # Get the number of the Symbol.
+        if mode == 'encrypt':
+            num = num + key
+        elif mode == 'decrypt':
+            num = num - key
+
+        # Handle the wrap-around if num is larger that the length of SYMBOLS or less than 0
+        if num >= len(SYMBOLS):
+            num = num - len(SYMBOLS)
+        elif num < 0:
+            num = num + len(SYMBOLS)
+
+        # Add encrypted/decrypted number's symbols to translated:
+        translated = translated + SYMBOLS[num]
+    else:
+        # Just add the symbol without encrypting/decrypting:
+        translated = translated + symbol
+
+# Display the encrypted/decrypted string to the screen:
+print(translated)
+
+try:
+    pyperclip.copy(translated)
+    print("Full {}ed text copied to clipboard.".format(mode))
+except:
+    pass # Do nothing is pyperclip was not installed
