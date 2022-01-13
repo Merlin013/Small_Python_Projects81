@@ -21,3 +21,8 @@
 ### Project 5: Bouncing DVD Logo
  This program simulates this colorful DVD logo by making it
 change direction each time it hits an edge.
+
+### Project 6: Caesar cipher
+ The Caesar cipher is a shift cipher that uses addition and subtraction 
+to encrypt and decrypt letters.
+
