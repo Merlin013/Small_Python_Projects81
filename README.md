@@ -26,3 +26,6 @@ change direction each time it hits an edge.
  The Caesar cipher is a shift cipher that uses addition and subtraction 
 to encrypt and decrypt letters.
 
+### Project 7: Caesar Hacker
+ This program hacks messages encrypted with the Caesar cipher by doing 
+ a brute force attack against every possible key.
