@@ -11,7 +11,7 @@ MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July',
 
 print("Calendar Maker, by Al Sweigart al@inventwithpython.com")
 
-while True: # Loop to get a year from the user.
+while True:  # Loop to get a year from the user.
     print("Enter the year for the calendar.")
     response = input(">> ")
 
@@ -22,7 +22,7 @@ while True: # Loop to get a year from the user.
     print("Please enter a numeric year, like 2021.")
     continue
 
-while True: # Loop to get a month from the user.
+while True:  # Loop to get a month from the user.
     print("Enter the month for the calendar, 1 - 12:")
     response = input(">> ")
 
@@ -36,8 +36,9 @@ while True: # Loop to get a month from the user.
 
     print("Please enter a number from 1 to 12.")
 
+
 def getCalendarFor(year, month):
-    calText = '' # caltext will contain the string of our calendar
+    calText = ''  # caltext will contain the string of our calendar
 
     # Put the month and year at the top of the calendar:
     calText += (' ' * 34) + MONTHS[month - 1] + ' ' + str(year) + '\n'
@@ -47,6 +48,50 @@ def getCalendarFor(year, month):
     calText += '...Sunday.....Monday....Tuesday...Wednesday...Thursday....Friday....Saturday..\n'
 
     # The horizontal line string that separate weeks:
-    weekSeparator = ('+----------'*7) + '+\n'
+    weekSeparator = ('+----------' * 7) + '+\n'
 
-    # The blank rows have 10 spaces in between
+    # The blank rows have 10 spaces in between the | day seperators:
+    blankRow = ('|          ' * 7) + '|\n'
+
+    # Get the first date in the month. ( The datetime module handles all the
+    # complicated calendar stuff for us here.)
+    currentDate = datetime.date(year, month, 1)
+
+    # Rollback currentDate until its Sunday (weekday() returns 6 for Sunday, not 0)
+    while currentDate.weekday() != 6:
+        currentDate -= datetime.timedelta(days=1)
+
+    while True:  # Loop over each week in the month.
+        calText += weekSeparator
+
+        # dayNumberRow is the row with the day number labels:
+        dayNumberRow = ''
+        for i in range(7):
+            dayNumberLabel = str(currentDate.day).rjust(2)
+            dayNumberRow = '|' + dayNumberLabel + (' ' * 8)
+            currentDate += datetime.timedelta(days=1)  # Go to next day.
+        dayNumberRow += '|\n'  # Add the vertical line after Saturday
+
+        # Add the day number row and 3 blank rows to the calendar text.
+        calText += dayNumberRow
+        for i in range(3):
+            calText += blankRow
+
+        # Check if we are done with the month:
+        if currentDate.month != month:
+            break
+
+    # Add the horizontal line at the very bottom of the calendar.
+    calText += weekSeparator
+    return calText
+
+
+calText = getCalendarFor(year, month)
+print(calText)  # Display the calendar.
+
+# Save the calendar to a text file.
+calendarFilename = 'calendar_{}_{}.txt'.format(year, month)
+with open(calendarFilename, 'w') as fileObj:
+    fileObj.write(calText)
+
+print('Saved to' + calendarFilename)
