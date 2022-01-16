@@ -68,7 +68,7 @@ def getCalendarFor(year, month):
         dayNumberRow = ''
         for i in range(7):
             dayNumberLabel = str(currentDate.day).rjust(2)
-            dayNumberRow = '|' + dayNumberLabel + (' ' * 8)
+            dayNumberRow += '|' + dayNumberLabel + (' ' * 8)
             currentDate += datetime.timedelta(days=1)  # Go to next day.
         dayNumberRow += '|\n'  # Add the vertical line after Saturday
 
@@ -94,4 +94,4 @@ calendarFilename = 'calendar_{}_{}.txt'.format(year, month)
 with open(calendarFilename, 'w') as fileObj:
     fileObj.write(calText)
 
-print('Saved to' + calendarFilename)
+print('Saved to ' + calendarFilename + ' in same directory as the .py script')
