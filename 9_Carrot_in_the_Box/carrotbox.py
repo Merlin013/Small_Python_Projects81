@@ -32,3 +32,47 @@ print('''HERE ARE 2 BOXES:
 
 print()
 print(playerNames)
+print()
+print(p1Name + ', you have a RED box in front of you.')
+print(p2Name + ', you have a GOLD box in front of you.')
+print()
+print(p1Name + ', you will get to look into your box.')
+print(p2Name.upper() + ', close your eyes and don\'t look!!!')
+input('When ' + p2Name + 'has closed their eyes, press enter...')
+print()
+
+print(p1Name + ' here is the inside of your box:')
+
+if random.randint(1, 2) == 1:
+    carrotInFirstBox = True
+else:
+    carrotInFirstBox = False
+
+if carrotInFirstBox:
+    print('''
+    ___VV____
+   |   VV    |
+   |   VV    |
+   |___||____|    __________
+  /    ||   /|   /         /|
+ +---------+ |  +---------+ |
+ |   RED   | |  |   GOLD  | |
+ |   BOX   | /  |   BOX   | /
+ +---------+/   +---------+/
+  (carrot!)''')
+    print(playerNames)
+else:
+    print('''
+    _________
+   |         |
+   |         |
+   |_________|    __________
+  /         /|   /         /|
+ +---------+ |  +---------+ |
+ |   RED   | |  |   GOLD  | |
+ |   BOX   | /  |   BOX   | /
+ +---------+/   +---------+/
+ (no carrot!)''')
+    print(playerNames)
+
+input('Press Enter to continue...')
